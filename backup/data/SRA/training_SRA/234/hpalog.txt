@@ -1,0 +1,585 @@
+0-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  26% (13m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 1 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  55m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  25m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m56s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m26s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  5m56s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  55s (x228 over 40h)    horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+1-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  102% (51m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 2
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  56m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  25m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m11s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m41s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  6m11s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  70s (x228 over 40h)    horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+2-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  102% (51m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  56m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  25m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m26s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m56s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  6m26s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  85s (x228 over 40h)    horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+3-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  100% (50m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  56m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  25m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m41s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m11s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  6m41s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  100s (x228 over 40h)   horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+4-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  50% (25m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 1 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 1
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  56m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  26m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m57s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m27s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  6m57s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  116s (x228 over 40h)   horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+5-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  62% (31m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 1 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  57m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  26m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m12s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m42s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m12s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  2m11s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+6-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  102% (51m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 2
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  57m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  26m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m27s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m57s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m27s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  2m26s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+7-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  100% (50m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  57m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  26m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m42s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m12s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m42s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  2m41s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+8-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  100% (50m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  57m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  27m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m57s (x232 over 40h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m27s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  7m57s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  2m56s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+9-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  32% (16m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 1 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 1
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  58m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  27m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x232 over 40h)    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m42s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m12s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  3m11s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+10-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  76% (38m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 1 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  58m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  27m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x232 over 40h)    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m58s (x35 over 15h)   horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m28s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  3m27s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+11-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  102% (51m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       1 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 2
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  58m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  27m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x232 over 40h)    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x35 over 15h)     horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m43s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  3m42s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+12-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  100% (50m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  58m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  28m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x232 over 40h)    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x35 over 15h)     horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  8m58s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  3m57s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+13-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  96% (48m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  59m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  28m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  11m (x232 over 40h)    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x35 over 15h)     horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m13s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  4m12s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
+14-------------------------------------------------------------------------------
+Name:                                                  log-station
+Namespace:                                             openfaas-fn
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Dec 2022 15:53:39 +0100
+Reference:                                             Deployment/log-station
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  65% (32m) / 90%
+Min replicas:                                          1
+Max replicas:                                          30
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 5 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       2 current / 2 desired
+Conditions:
+  Type            Status  Reason              Message
+  ----            ------  ------              -------
+  AbleToScale     True    ReadyForNewScale    recommended size matches current size
+  ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                    From                       Message
+  ----    ------             ----                   ----                       -------
+  Normal  SuccessfulRescale  59m (x361 over 15h)    horizontal-pod-autoscaler  (combined from similar events): New size: 12; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  28m (x271 over 40h)    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  11m (x232 over 40h)    horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  10m (x35 over 15h)     horizontal-pod-autoscaler  New size: 7; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  9m28s (x200 over 40h)  horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  4m27s (x228 over 40h)  horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
