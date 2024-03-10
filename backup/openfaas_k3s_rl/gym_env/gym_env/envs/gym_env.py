@@ -25,7 +25,7 @@ class GymEnv(gym.Env):
         super(GymEnv, self).__init__()
         # General variables defining the environment
         self.done = False
-        #self.slot = "A" uncomment for training
+        self.slot = "A" #uncomment for training
         self.MAX_PODS = 30
         self.MIN_PODS = 1
         self.DOWNSCALE = 5
@@ -62,15 +62,15 @@ class GymEnv(gym.Env):
       '''
         # create hpa
         #select slot
-        #modulo = self.counter%2   #uncomment for training 
-        #if modulo == 0:
-        #   self.slot = "A"
-        #elif modulo == 1:
-        #   self.slot = "B"
+        modulo = self.counter%2   #uncomment for training 
+        if modulo == 0:
+           self.slot = "A"
+        elif modulo == 1:
+           self.slot = "B"
         self._take_action(action)
         path = self.general_path +"/"+ str(self.counter) #folder for the current iteration
-        #out = self.test(path, self.slot) #azure train
-        out = self.test(path,0)
+        out = self.test(path, self.slot) #azure train
+        #out = self.test_evaluation(path, self.counter) #uncomment test
         ob = self._get_state(path)
         print("State object is {}".format(ob))
         # calculate reward
@@ -106,8 +106,8 @@ class GymEnv(gym.Env):
       pods_number: Third number is the number of the current pods
       timeout: discretized
       """
-        #service_lat = float(get_test_latency(path, self.slot)) #uncommen training
-        service_lat = float(get_test_latency(path))
+        service_lat = float(get_train_latency(path, self.slot)) #uncommen training
+        #service_lat = float(get_test_latency(path, self.counter)) #uncomment test
         avg_pods = math.ceil(get_avg_pods(path))
         self.currentpods = avg_pods 
         return self.encode(service_lat, avg_pods)
@@ -117,7 +117,8 @@ class GymEnv(gym.Env):
 
 
     def _get_reward(self, path):
-        lat = float(get_test_latency(path))/1000 # s
+        lat = float(get_train_latency(path, self.slot))/1000 # s
+        # lat = float(get_test_latency(path, self.slot))/1000 #uncomment test
         print("Latency is {}".format(lat))
         SLA = self.sla_latency/1000
         if lat < SLA:
@@ -134,7 +135,8 @@ class GymEnv(gym.Env):
         pod_weight = 0.3
         lat_weight = 0.7
         d=
-        lat = float(get_test_latency(path))
+        lat = float(get_train_latency(path, self.slot)) # s
+        # lat = float(get_test_latency(path, self.slot)) #uncomment test
         if self.currentpods == 1 and lat <= self.sla_latency:
             reward = max_reward
             return reward
@@ -181,9 +183,6 @@ class GymEnv(gym.Env):
     def test(self, path, slot):
         ## set for wrk stress test ##
         ## the tool can be changed ##
-       f_list_test = ["/home/labtlc/openfaas_k3s_rl/example_wrk_sft.lua", "/home/labtlc/openfaas_k3s_rl/example_wrk2_sft.lua",
-                  "/home/labtlc/openfaas_k3s_rl/example_wrk3_sft.lua", "/home/labtlc/openfaas_k3s_rl/example_wrk4_sft.lua",
-                  "/home/labtlc/openfaas_k3s_rl/example_wrk5_sft.lua"]
         f_list_train = ["/home/labtlc/openfaas_k3s_rl/wrk1_{}.lua".format(slot), "/home/labtlc/openfaas_k3s_rl/wrk2_{}.lua".format(slot),
                  "/home/labtlc/openfaas_k3s_rl/wrk3_{}.lua".format(slot), "/home/labtlc/openfaas_k3s_rl/wrk4_{}.lua".format(slot),
                       ]
@@ -194,6 +193,16 @@ class GymEnv(gym.Env):
         cmds_list.append("wrk -c1 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[3], self.endpoint))  #one or more wrk lua scripts
         cmds_list = []
         cmds_list.append("wrk -c5 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[0], self.endpoint))
+        procs_list = [Popen(cmd.split(), stdout=PIPE, stderr=PIPE, cwd=path) for cmd in cmds_list]
+        for proc in procs_list:
+            proc.wait()
+        return 1
+
+    def test_evaluation(self, path, counter):
+        f_list = ["/home/labtlc/openfaas_k3s_rl/evaluation/{}/wrk1_A.lua".format(counter), "/home/labtlc/openfaas_k3s_rl/evaluation/{}/wrk2_A.lua".format(counter)]
+        cmds_list = []
+        cmds_list.append("wrk -c5 -t1 -d4m --timeout 1m -s {} {}".format(f_list[0], self.endpoint))
+        cmds_list.append("wrk -c1 -t1 -d4m --timeout 1m -s {} {}".format(f_list[1], self.endpoint))
         procs_list = [Popen(cmd.split(), stdout=PIPE, stderr=PIPE, cwd=path) for cmd in cmds_list]
         for proc in procs_list:
             proc.wait()
