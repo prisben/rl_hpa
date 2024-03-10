@@ -25,6 +25,7 @@ class GymEnv(gym.Env):
         super(GymEnv, self).__init__()
         # General variables defining the environment
         self.done = False
+        #self.slot = "A" uncomment for training
         self.MAX_PODS = 30
         self.MIN_PODS = 1
         self.DOWNSCALE = 5
@@ -60,13 +61,20 @@ class GymEnv(gym.Env):
                  use this for learning.
       '''
         # create hpa
+        #select slot
+        #modulo = self.counter%2   #uncomment for training 
+        #if modulo == 0:
+        #   self.slot = "A"
+        #elif modulo == 1:
+        #   self.slot = "B"
         self._take_action(action)
         path = self.general_path +"/"+ str(self.counter) #folder for the current iteration
-        out = self.test(path)
+        #out = self.test(path, self.slot) #azure train
+        out = self.test(path,0)
         ob = self._get_state(path)
         print("State object is {}".format(ob))
         # calculate reward
-        reward = self._get_reward(path)
+        reward = self._get_reward_new(path)
         now = datetime.datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         self.counter +=1
@@ -98,6 +106,7 @@ class GymEnv(gym.Env):
       pods_number: Third number is the number of the current pods
       timeout: discretized
       """
+        #service_lat = float(get_test_latency(path, self.slot)) #uncommen training
         service_lat = float(get_test_latency(path))
         avg_pods = math.ceil(get_avg_pods(path))
         self.currentpods = avg_pods 
@@ -116,6 +125,29 @@ class GymEnv(gym.Env):
         else:
             reward = (SLA - lat)*1000
         print("Reward is {}".format(reward))
+        return reward
+
+    def _get_reward_new(self, path):
+        reward = 0
+        max_reward = 100
+        min_reward = 0
+        pod_weight = 0.3
+        lat_weight = 0.7
+        d=
+        lat = float(get_test_latency(path))
+        if self.currentpods == 1 and lat <= self.sla_latency:
+            reward = max_reward
+            return reward
+        else if lat > self.sla_latency:
+            reward = min_reward
+            return reward
+        pod_reward = -100 / (self.MAX_PODS-1)*self.currentpods + 100*self.MAX_PODS/(self.MAX_PODS-1)
+        reward = reward + pod_weight*pod_reward
+        if lat/self.sla_latency<0.8:
+            lat_reward = 100*math.exp(-0.3*d*(0.8-lat/self.sla_latency)**2)
+        else if lat/self.sla_latency>0.8:
+            lat_reward = 100*math.exp(-10*d*(0.8-lat/self.sla_latency)**2)
+        reward = reward + lat_weight*lat_reward
         return reward
 
     def find_interval(self, lat):
@@ -146,10 +178,20 @@ class GymEnv(gym.Env):
         i += label
         return i
 
-    def test(self, path):
+    def test(self, path, slot):
         ## set for wrk stress test ##
         ## the tool can be changed ##
-        f_list_train = [""] #one or more wrk lua scripts
+       f_list_test = ["/home/labtlc/openfaas_k3s_rl/example_wrk_sft.lua", "/home/labtlc/openfaas_k3s_rl/example_wrk2_sft.lua",
+                  "/home/labtlc/openfaas_k3s_rl/example_wrk3_sft.lua", "/home/labtlc/openfaas_k3s_rl/example_wrk4_sft.lua",
+                  "/home/labtlc/openfaas_k3s_rl/example_wrk5_sft.lua"]
+        f_list_train = ["/home/labtlc/openfaas_k3s_rl/wrk1_{}.lua".format(slot), "/home/labtlc/openfaas_k3s_rl/wrk2_{}.lua".format(slot),
+                 "/home/labtlc/openfaas_k3s_rl/wrk3_{}.lua".format(slot), "/home/labtlc/openfaas_k3s_rl/wrk4_{}.lua".format(slot),
+                      ]
+        cmds_list = []
+        cmds_list.append("wrk -c5 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[0], self.endpoint))
+        cmds_list.append("wrk -c1 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[1], self.endpoint))
+        cmds_list.append("wrk -c1 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[2], self.endpoint))
+        cmds_list.append("wrk -c1 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[3], self.endpoint))  #one or more wrk lua scripts
         cmds_list = []
         cmds_list.append("wrk -c5 -t1 -d4m --timeout 1m -s {} {}".format(f_list_train[0], self.endpoint))
         procs_list = [Popen(cmd.split(), stdout=PIPE, stderr=PIPE, cwd=path) for cmd in cmds_list]
