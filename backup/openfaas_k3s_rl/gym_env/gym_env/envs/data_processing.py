@@ -8,12 +8,54 @@ from statistics import mean
 from gym_env.envs.test_k8s import get_nodes_avg_cpu, get_nodes_avg_mem, get_deployment_avg_CPU, get_deployment_avg_mem
 
 
-def get_test_latency(path):
+def get_train_latency(path, slot):
     filename1 = path + "/report1.csv"
     df1 = pd.read_csv(filename1)
-    latency_ns = df1['Avg latency'][0]
+    latency_ns1 = df1['Avg latency'][0]
+    filename2 = path + "/report2.csv"
+    df2 = pd.read_csv(filename2)
+    latency_ns2 = df2['Avg latency'][0]
+    filename3 = path + "/report3.csv"
+    df3 = pd.read_csv(filename3)
+    latency_ns3 = df3['Avg latency'][0]
+    filename4 = path + "/report4.csv"
+    df4 = pd.read_csv(filename4)
+    latency_ns4 = df4['Avg latency'][0]
+    len_1 = sum(1 for line in open('/home/labtlc/openfaas_k3s_rl/iat_1_{}.txt'.format(slot)))
+    len_2 = sum(1 for line in open('/home/labtlc/openfaas_k3s_rl/iat_2_{}.txt'.format(slot)))
+    len_3 = sum(1 for line in open('/home/labtlc/openfaas_k3s_rl/iat_3_{}.txt'.format(slot)))
+    len_4 = sum(1 for line in open('/home/labtlc/openfaas_k3s_rl/iat_4_{}.txt'.format(slot)))
+    tot = len_1+len_2+len_3+len_4
+    w1 = 10*len_1 / tot
+    w2 = 10*len_2 / tot
+    w3 = 10*len_3 / tot
+    w4 = 10*len_4 / tot
+    latency_ns = (w1*latency_ns1+w2*latency_ns2+w3*latency_ns3+w4*latency_ns4)/(w1+w2+w3+w4)
     resultlat = round(latency_ns / 1000, 3)
+    pathlat = path + "/avg_lat.txt"
+    with open(pathlat, 'w') as f:
+        f.write(str(resultlat))
     return resultlat
+
+def get_test_latency(path, slot):
+    filename1 = path + "/report1.csv"
+    df1 = pd.read_csv(filename1)
+    latency_ns1 = df1['Avg latency'][0]
+    filename2 = path + "/report2.csv" 
+    df2 = pd.read_csv(filename2)
+    latency_ns2 = df2['Avg latency'][0]
+    len_1 = sum(1 for line in open('/home/labtlc/openfaas_k3s_rl/evaluation/{}/iat_1_A.txt'.format(slot)))
+    len_2 = sum(1 for line in open('/home/labtlc/openfaas_k3s_rl/evaluation/{}/iat_2_A.txt'.format(slot)))
+    tot = len_1+len_2
+    w1 = 10*len_1 / tot
+    w2 = 10*len_2 / tot
+    latency_ns = (w1*latency_ns1+w2*latency_ns2)/(w1+w2)
+    resultlat = round(latency_ns / 1000, 3)
+    pathlat = path + "/avg_lat.txt"
+    with open(pathlat, 'w') as f:
+        f.write(str(resultlat))
+    return resultlat
+    
 
 def get_avg_pods(path):
     filename = path + "/deployment_cpu.csv"
